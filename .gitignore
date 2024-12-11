@@ -9,3 +9,4 @@ node_modules/
 
 # Local development
 js/config.local.js
+js/env.local.js

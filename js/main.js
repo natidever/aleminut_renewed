@@ -1,8 +1,8 @@
-import './env.js';
+import env from './env.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
     // Get API key from environment
-    const OPENAI_API_KEY = window.ENV?.OPENAI_API_KEY;
+    const OPENAI_API_KEY = env.OPENAI_API_KEY;
     
     if (!OPENAI_API_KEY) {
         console.error('OpenAI API key not found');
