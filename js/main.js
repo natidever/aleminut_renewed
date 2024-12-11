@@ -1,8 +1,17 @@
 import env from './env.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
-    // Get API key from environment
-    const OPENAI_API_KEY = env.OPENAI_API_KEY;
+    let OPENAI_API_KEY;
+    
+    try {
+        // Try to get API key from Netlify function in production
+        const response = await fetch('/.netlify/functions/get-env');
+        const data = await response.json();
+        OPENAI_API_KEY = data.OPENAI_API_KEY;
+    } catch (error) {
+        // Fallback to local environment
+        OPENAI_API_KEY = env.OPENAI_API_KEY;
+    }
     
     if (!OPENAI_API_KEY) {
         console.error('OpenAI API key not found');
