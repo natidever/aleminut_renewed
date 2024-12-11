@@ -1,0 +1,286 @@
+:root {
+    /* Colors */
+    --primary-bg: #ffffff;
+    --secondary-bg: #f8f9fa;
+    --accent-color: #1a73e8;
+    --text-primary: #202124;
+    --text-secondary: #5f6368;
+    --border-color: #dadce0;
+    --hover-bg: #f1f3f4;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --gradient-start: #6930c3;
+    --gradient-middle: #00fff9;
+    --gradient-end: #64ffda;
+    
+    /* Spacing */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+    --primary-bg: #202124;
+    --secondary-bg: #303134;
+    --text-primary: #e8eaed;
+    --text-secondary: #9aa0a6;
+    --border-color: #3c4043;
+    --hover-bg: #303134;
+    --gradient-start: #6930c3;
+    --gradient-middle: #00fff9;
+    --gradient-end: #64ffda;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Google Sans', sans-serif;
+    background: var(--primary-bg);
+    color: var(--text-primary);
+    line-height: 1.5;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Header Styles */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.header-right {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-primary);
+    padding: var(--spacing-sm);
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background: var(--hover-bg);
+}
+
+/* Chat Area */
+.chat-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    max-width: 768px;
+    margin: 0 auto;
+    width: 100%;
+    padding: var(--spacing-lg);
+    overflow-y: auto;
+}
+
+.messages {
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: var(--spacing-xl);
+}
+
+/* Input Area */
+.input-area {
+    position: sticky;
+    bottom: 0;
+    padding: var(--spacing-md);
+    background: var(--primary-bg);
+}
+
+.chat-form {
+    background: var(--secondary-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--spacing-md);
+}
+
+textarea {
+    flex: 1;
+    border: none;
+    background: none;
+    resize: none;
+    padding: var(--spacing-sm) 0;
+    max-height: 200px;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+.send-button {
+    padding: var(--spacing-sm);
+    border-radius: 50%;
+    color: var(--accent-color);
+    opacity: 0.5;
+    transition: opacity 0.2s;
+}
+
+.send-button:not(:disabled) {
+    opacity: 1;
+}
+
+.input-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--spacing-xs);
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+/* Message Styles */
+.message {
+    display: flex;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md) 0;
+    animation: fadeIn 0.3s ease;
+}
+
+.message-content {
+    flex: 1;
+    line-height: 1.6;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Welcome Message */
+.welcome-message {
+    text-align: center;
+    padding: var(--spacing-xl) 0;
+    margin-bottom: var(--spacing-xl);
+}
+
+.gradient-text {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(
+        45deg,
+        var(--gradient-start),
+        var(--gradient-middle),
+        var(--gradient-end)
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradientShift 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    text-shadow: 0 0 20px rgba(105, 48, 195, 0.1);
+}
+
+.welcome-message p {
+    color: var(--text-secondary);
+    margin-top: var(--spacing-md);
+    font-size: 1.1rem;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    25% { background-position: 100% 50%; }
+    50% { background-position: 50% 100%; }
+    75% { background-position: 0% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@media (max-width: 768px) {
+    .chat-area {
+        padding: var(--spacing-md);
+    }
+    
+    .gradient-text {
+        font-size: 2rem;
+    }
+    
+    .input-area {
+        padding: var(--spacing-sm);
+    }
+}
+
+/* Add to your existing CSS */
+.typing-indicator {
+    display: flex;
+    gap: 4px;
+    padding: 12px 16px;
+    background: linear-gradient(
+        90deg,
+        var(--secondary-bg) 0%,
+        var(--hover-bg) 50%,
+        var(--secondary-bg) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+    border-radius: 8px;
+}
+
+.typing-dots span {
+    width: 8px;
+    height: 8px;
+    background: var(--text-secondary);
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 2px;
+    opacity: 0.4;
+    animation: dotPulse 1.4s infinite;
+}
+
+.typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+.typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+@keyframes dotPulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+}
+
+/* System Message Styles */
+.message.system-message {
+    background: rgba(255, 193, 7, 0.1);
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    margin: var(--spacing-sm) 0;
+}
+
+.message.system-message .message-content {
+    color: var(--text-secondary);
+    font-style: italic;
+}

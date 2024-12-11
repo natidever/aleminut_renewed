@@ -1,0 +1,11 @@
+# Environment files
+.env
+.env.local
+.env.*
+config.local.js
+
+# Dependencies
+node_modules/
+
+# Local development
+js/config.local.js

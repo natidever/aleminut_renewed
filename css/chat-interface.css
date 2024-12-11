@@ -1,0 +1,67 @@
+.chat-interface {
+    background: rgba(10, 11, 15, 0.95);
+    border-radius: 16px;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: var(--spacing-lg);
+}
+
+.chat-messages {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.message {
+    display: flex;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    border-radius: 12px;
+    animation: messageAppear 0.3s ease;
+}
+
+.message-user {
+    background: rgba(255, 255, 255, 0.1);
+    margin-left: auto;
+    max-width: 80%;
+}
+
+.message-ai {
+    background: rgba(var(--primary-color), 0.1);
+    margin-right: auto;
+    max-width: 80%;
+}
+
+.chat-input {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+}
+
+.chat-input input {
+    flex: 1;
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-light);
+}
+
+.send-btn {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    border: none;
+    border-radius: 8px;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.send-btn:hover {
+    transform: scale(1.05);
+} 

@@ -1,0 +1,4 @@
+// Copy this file to config.local.js and add your API key
+window.ENV = {
+    OPENAI_API_KEY: 'your-api-key-here'
+}; 
